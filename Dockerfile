@@ -54,7 +54,7 @@ ARG PHP_SERVER
 ARG SHELL_OPTS
 
 ARG PACK_LIST="bash bash-completion git curl wget sudo unzip iproute2 ssmtp openssl jq tzdata mailcap ncurses util-linux pciutils usbutils coreutils binutils findutils grep \
-  rsync zip tini procps net-tools coreutils sed gawk grep attr findutils readline lsof less curl shadow ca-certificates musl build-base python python-dev gfortran lapack-dev libxml2-dev libxslt-dev jpeg-dev "
+  rsync zip tini procps net-tools coreutils sed gawk grep attr findutils readline lsof less curl shadow ca-certificates musl build-base python3 python3-dev gfortran lapack-dev libxml2-dev libxslt-dev jpeg-dev "
 
 ENV ENV=~/.profile
 ENV SHELL="/bin/sh"
