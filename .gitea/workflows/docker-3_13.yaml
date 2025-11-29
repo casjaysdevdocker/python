@@ -1,9 +1,9 @@
-name: python-3
+name: python-3.13
 
 on: push
 
 jobs:
-  release-python-3:
+  release-python-3_13:
     runs-on: act_runner
     container:
       image: catthehacker/ubuntu:act-latest
