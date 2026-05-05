@@ -19,17 +19,17 @@ dockermgr update python
 ## Install and run container
   
 ```shell
-mkdir -p "$HOME/.local/share/srv/docker/python/rootfs"
+mkdir -p "$HOME/.local/share/srv/docker/python/volumes"
 git clone "https://github.com/dockermgr/python" "$HOME/.local/share/CasjaysDev/dockermgr/python"
-cp -Rfva "$HOME/.local/share/CasjaysDev/dockermgr/python/rootfs/." "$HOME/.local/share/srv/docker/python/rootfs/"
+cp -Rfva "$HOME/.local/share/CasjaysDev/dockermgr/python/rootfs/." "$HOME/.local/share/srv/docker/python/volumes/"
 docker run -d \
 --restart always \
 --privileged \
 --name casjaysdevdocker-python \
 --hostname python \
 -e TZ=${TIMEZONE:-America/New_York} \
--v "$HOME/.local/share/srv/docker/casjaysdevdocker-python/rootfs/data:/data:z" \
--v "$HOME/.local/share/srv/docker/casjaysdevdocker-python/rootfs/config:/config:z" \
+-v "$HOME/.local/share/srv/docker/casjaysdevdocker-python/volumes/data:/data:z" \
+-v "$HOME/.local/share/srv/docker/casjaysdevdocker-python/volumes/config:/config:z" \
 -p 80:80 \
 casjaysdevdocker/python:latest
 ```
@@ -46,8 +46,8 @@ services:
       - TZ=America/New_York
       - HOSTNAME=python
     volumes:
-      - "$HOME/.local/share/srv/docker/casjaysdevdocker-python/rootfs/data:/data:z"
-      - "$HOME/.local/share/srv/docker/casjaysdevdocker-python/rootfs/config:/config:z"
+      - "$HOME/.local/share/srv/docker/casjaysdevdocker-python/volumes/data:/data:z"
+      - "$HOME/.local/share/srv/docker/casjaysdevdocker-python/volumes/config:/config:z"
     ports:
       - 80:80
     restart: always
