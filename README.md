@@ -1,6 +1,6 @@
 ## 👋 Welcome to python 🚀  
 
-Description  
+python README  
   
   
 ## Install my system scripts  
@@ -19,17 +19,18 @@ dockermgr update python
 ## Install and run container
   
 ```shell
-mkdir -p "$HOME/.local/share/srv/docker/python/volumes"
+dockerHome="/var/lib/srv/$USER/docker/casjaysdevdocker/python/python/latest/rootfs"
+mkdir -p "/var/lib/srv/$USER/docker/python/rootfs"
 git clone "https://github.com/dockermgr/python" "$HOME/.local/share/CasjaysDev/dockermgr/python"
-cp -Rfva "$HOME/.local/share/CasjaysDev/dockermgr/python/rootfs/." "$HOME/.local/share/srv/docker/python/volumes/"
+cp -Rfva "$HOME/.local/share/CasjaysDev/dockermgr/python/rootfs/." "$dockerHome/"
 docker run -d \
 --restart always \
 --privileged \
---name casjaysdevdocker-python \
+--name casjaysdevdocker-python-latest \
 --hostname python \
 -e TZ=${TIMEZONE:-America/New_York} \
--v "$HOME/.local/share/srv/docker/casjaysdevdocker-python/volumes/data:/data:z" \
--v "$HOME/.local/share/srv/docker/casjaysdevdocker-python/volumes/config:/config:z" \
+-v "$dockerHome/data:/data:z" \
+-v "$dockerHome/config:/config:z" \
 -p 80:80 \
 casjaysdevdocker/python:latest
 ```
@@ -46,8 +47,8 @@ services:
       - TZ=America/New_York
       - HOSTNAME=python
     volumes:
-      - "$HOME/.local/share/srv/docker/casjaysdevdocker-python/volumes/data:/data:z"
-      - "$HOME/.local/share/srv/docker/casjaysdevdocker-python/volumes/config:/config:z"
+      - "/var/lib/srv/$USER/docker/casjaysdevdocker/python/python/latest/rootfs/data:/data:z"
+      - "/var/lib/srv/$USER/docker/casjaysdevdocker/python/python/latest/rootfs/config:/config:z"
     ports:
       - 80:80
     restart: always
