@@ -19,8 +19,8 @@ dockermgr update python
 ## Install and run container
   
 ```shell
-dockerHome="/var/lib/srv/$USER/docker/casjaysdevdocker/python/python/latest/rootfs"
-mkdir -p "/var/lib/srv/$USER/docker/python/rootfs"
+dockerHome="/srv/$USER/docker/casjaysdevdocker/python/python/latest/rootfs"
+mkdir -p "/srv/$USER/docker/python/rootfs"
 git clone "https://github.com/dockermgr/python" "$HOME/.local/share/CasjaysDev/dockermgr/python"
 cp -Rfva "$HOME/.local/share/CasjaysDev/dockermgr/python/rootfs/." "$dockerHome/"
 docker run -d \
@@ -47,8 +47,8 @@ services:
       - TZ=America/New_York
       - HOSTNAME=python
     volumes:
-      - "/var/lib/srv/$USER/docker/casjaysdevdocker/python/python/latest/rootfs/data:/data:z"
-      - "/var/lib/srv/$USER/docker/casjaysdevdocker/python/python/latest/rootfs/config:/config:z"
+      - "/srv/$USER/docker/casjaysdevdocker/python/python/latest/rootfs/data:/data:z"
+      - "/srv/$USER/docker/casjaysdevdocker/python/python/latest/rootfs/config:/config:z"
     ports:
       - 80:80
     restart: always
